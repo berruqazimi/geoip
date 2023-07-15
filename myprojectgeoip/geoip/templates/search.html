@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GeoIP Information</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>IP Information</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="ip_address" placeholder="Enter an IP address">
+        <input type="submit" value="Submit">
+    </form>
+    {% if geoip_data %}
+        <table>
+            <tr>
+                <th>IP Address</th>
+                <td>{{ geoip_data.ip }}</td>
+            </tr>
+            <tr>
+                <th>Hostname</th>
+                <td>{{ geoip_data.hostname }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ geoip_data.country_name }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ geoip_data.region }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ geoip_data.city }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ geoip_data.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ geoip_data.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Continent</th>
+                <td>{{ geoip_data.continent_name }}</td>
+            </tr>
+        </table>
+    {% endif %}
+</body>
+</html>
