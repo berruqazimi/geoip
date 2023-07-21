@@ -13,5 +13,5 @@ def home(request):
     if request.method == "POST":
         ip_address = request.POST["ip_address"]
         geoip_data = get_geoip_data(ip_address)
-        return render(request, "search.html", {"geoip_data": geoip_data})
-    return render(request, "search.html")
+        return render(request, "index.html", {"geoip_data": geoip_data})
+    return render(request, "index.html")
